@@ -1,0 +1,196 @@
+SQL – Part II
+
+Hernán Rondelli
+lucifer.unix.cabj@gmail.com
+
+Universidad de Ciencias Empresariales y Sociales
+
+* bit.ly/uces-db2-sql-2
+
+.image img/uces-db2-sql-2.png
+
+* order by
+
+* order by
+
+	select *
+	from   empleade
+	order  by salario;
+ 
+	select *
+	from   empleade
+	order  by salario asc;
+ 
+	select *
+	from   empleade
+	order  by salario desc;
+ 
+	select *
+	from   empleade
+	order  by apellido, nombre;
+
+* Subqueries
+
+* subquery
+
+ select nombre, salario
+ from empleade
+ where salario >= (
+     select salario
+     from empleade
+     where legajo = 626
+ );
+
+* exists
+
+ select e1.nombre, e1.apellido
+ from empleade e1
+ where not exists (
+     select *
+     from empleade e2
+     where departamento = 'sistemas' and e2.salario >= e1.salario
+ );
+
+* all
+
+ select nombre, apellido
+ from empleade
+ where salario > all (
+     select salario
+     from empleade
+     where departamento = 'sistemas'
+ );
+
+* in
+
+ select nombre, apellido, departamento
+ from  empleade
+ where departamento in (
+     select departamento
+     from proyecto
+     where fecha_inicio >= '2011-06-26'
+ );
+
+* Funciones de agregación
+
+* Funciones de agregación…
+
+`count()`
+
+	select count(*) 
+	from   empleade;
+ 
+	select count(nombre) 
+	from   empleade;
+ 
+	select count(distinct nombre) 
+	from   empleade;
+
+* Funciones de agregación
+
+	select sum(salario) from empleade;
+ 
+	select max(salario) from empleade;
+ 
+	select min(salario) from empleade;
+ 
+	select avg(salario) from empleade;
+ 
+	select max(salario), min(salario), avg(salario) from empleade;
+
+* group by
+
+* group by
+
+	select   departamento, count(*), avg(salario)
+	from     empleade
+	group by departamento;
+ 
+	select   departamento, count(*), salario
+	from     empleade
+	group by departamento, salario;
+ 
+	select   departamento, count(*), avg(salario)
+	from     empleade
+	where    departamento = 'sistemas' or departamento = 'finanzas'
+	group by departamento;
+
+* having
+
+	select   departamento, avg(salario) 
+	from     empleade 
+	group by departamento 
+	having   count(*) > 10;
+
+# *having* sólo puede hacer referencia a funciones de agregación ó a campos que estén en el *group*by*.
+
+* having ó where 🤔
+
+	select   departamento, count(*) 
+	from     empleade 
+	where    salario >= 40000
+	group by departamento 
+	having   count(*) > 10;
+ 
+	select   departamento, count(*) 
+	from     empleade 
+	where    salario >= 40000 and departamento in (select   departamento
+	                                               from     empleade
+	                                               group by departamento
+	                                               having   count(*) > 10)
+	group by departamento;  
+
+* Operaciones de conjuntos
+
+* union
+
+	select a from r
+	union
+	select a from s;
+ 
+	select a from r
+	union all
+	select a from s;
+
+* intersect
+
+	(select a from r)
+	intersect
+	(select a from s);
+ 
+	(select a from r)
+	intersect all
+	(select a from s);
+
+* except
+
+	(select a from r)
+	except
+	(select a from s);
+ 
+	(select a from r)
+	except all
+	(select a from s);
+
+* One more thing…
+
+* división
+
+Empleades que trabajan en todos los proyectos.
+ 
+ select distinct legajo
+ from trabaja_en t1
+ where not exists (
+     select 1
+     from proyecto p
+     where not exists (
+         select 1
+         from trabaja_en t2
+         where t2.legajo = t1.legajo and t2.proyecto_id = p.proyecto_id
+     )
+ );
+
+# empty title
+* 
+
+.image img/questions.png
