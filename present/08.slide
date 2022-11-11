@@ -30,7 +30,7 @@ Acceso B
 
  update caja_de_ahorro set saldo = saldo + 2000 where número_de_cuenta = 626;
 
-Si el cliente tenía $10000 en su cuenta, cuánto dinero tiene ahora?
+Si le cliente tenía $10000 en su cuenta, cuánto dinero tiene ahora?
 
 * Acceso concurrente (2)
 
