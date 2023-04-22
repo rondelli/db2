@@ -32,13 +32,14 @@ Universidad de Ciencias Empresariales y Sociales
 
 Estructura de una función
 
- create function nombre(par1 tipo1, par2 tipo2,…, parN tipoN) returns tipoR as $$
+ create function nombre(par_1 tipo_1, par_2 tipo_2,…, par_n tipo_n) returns tipo_r as $$
  declare
-     variable1 tipo1;
+     variable_1 tipo_1;
      …
-     variableM tipoM;
+     variable_m tipo_m;
  begin
      /* statements */
+     return resultado_tipo_r;
  end;
  $$ language plpgsql;
 
