@@ -206,11 +206,12 @@ Función sin parámetros que devuelve trigger
 
  create function función_del_trigger() returns trigger as $$
  declare
-     variable1 tipo1;
+     variable_1 tipo_1;
      …
-     variableM tipoM;
+     variable_m tipo_m;
  begin
      /* statements */
+     return new;
  end;
  $$ language plpgsql;
 
