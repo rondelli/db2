@@ -6,9 +6,9 @@ lucifer.unix.cabj@gmail.com
 
 Universidad de Ciencias Empresariales y Sociales
 
-* bit.ly/uces-go-and-db
+* rondelli.github.io/db2/go.html
 
-.image img/uces-go-and-db.png
+.image img/rondelli.github.io-db2-go.html.png 500 _
 
 * What is Go?
 
@@ -32,7 +32,6 @@ C
 .code src/for.c /START OMIT/,/STOP OMIT/
 
 _maaasoomeeeno…_
-
 
 * Family tree
 
@@ -330,6 +329,36 @@ Running code
 	$ go run .
 
 * JSON
+
+# empty title
+* 
+
+.image img/jason1.jpg _ 850
+.caption *JSON*
+
+# empty title
+* 
+
+.image img/jason2.jpg _ 500
+.caption *JSON*
+
+# empty title
+* 
+
+.image img/jason3.jpg _ 768
+.caption *JSON*
+
+# empty title
+* 
+
+.image img/jason4.jpg _ 800
+.caption *JSON*
+
+# empty title
+* 
+
+.image img/jason5.jpg _ 700
+.caption *JSON*
 
 * JSON
 
